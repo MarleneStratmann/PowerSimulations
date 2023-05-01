@@ -1,0 +1,18 @@
+Package: PowerSimulation
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person("Marlene", "Stratmann", , "marlene.stratmann@t-online.de", role = c("aut", "cre"))
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Depends:
+  R (>= 4.0)
+Imports:
+  parallel,
+  data.table,
+  broom,
+  stats,
+  rlang

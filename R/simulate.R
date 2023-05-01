@@ -26,7 +26,7 @@ simulate <- function(n_obs, p_preterm, p_autism, p_geriatric_preg) {
                       + factor(preterm)
                       + I(dta$preterm > 0):geriatric_preg,
                       data = dta,
-                      family = "binomial()")
+                      family = "binomial")
 
   broom::tidy(model)
 

@@ -60,10 +60,9 @@ run_simulations <- function(n_obs            = 10000,
   cat("Geriatric pregnancy prevalence:", p_geriatric_preg       , "\n")
   cat("--------------------------------------\n")
 
-
   cat("\nSimulation results:\n")
   # Calculate power
-  out <- simulations[, list(power = sum(p_value < 0.05) / .N),
+  out <- simulations[, .(power = sum(p.value < 0.05) / .N),
                      by = term]
 
   return(out)

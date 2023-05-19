@@ -10,6 +10,29 @@ run_simulations(n_obs = 500, n_simulations = 100, n_parallel_cores = 3,
                 p_autism = 0.05,
                 p_geriatric_preg = 1/6)
 ```
+The package also includes interactions between autism prevalence and gestational age as well as 
+             autism prevalence and geriatric pregnancies. The code for these interactions is as follows:
+              
+``` 
+dta$autism <- stats::rbinom(n_obs, 1, p_autism
+                              + dta$geriatric_preg  * 0.04
+                              + I(dta$preterm == 1) * 0.10
+                              + I(dta$preterm == 2) * 0.05
+                              + I(dta$preterm == 3) * 0.025
+                              + dta$geriatric_preg * I(dta$preterm > 0) * 0.05)
+                              
+```
+              
+The model specifications for the power calculations are:
+
+```
+               model <- stats::glm(autism ~ geriatric_preg
+                      + factor(preterm)
+                      + I(dta$preterm > 0):geriatric_preg,
+                      data = dta,
+                      family = "binomial")
+
+```
 # Installation
 For installing the package from GitHub please use
 

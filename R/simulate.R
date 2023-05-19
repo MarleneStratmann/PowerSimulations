@@ -22,12 +22,6 @@ simulate <- function(n_obs, p_preterm, p_autism, p_geriatric_preg) {
                               + I(dta$preterm == 3) * 0.025
                               + dta$geriatric_preg * I(dta$preterm > 0) * 0.05)
 
-  model <- stats::glm(autism ~ geriatric_preg
-                      + factor(preterm)
-                      + I(dta$preterm > 0):geriatric_preg,
-                      data = dta,
-                      family = "binomial")
-
-  broom::tidy(model)
+  return(dta)
 
 }

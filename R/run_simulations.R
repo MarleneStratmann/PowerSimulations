@@ -32,14 +32,22 @@ run_simulations <- function(n_obs            = 10000,
 
   # Run simulaiton
   simulations <- parallel::parLapply(cl, 1:n_simulations, function(i) {
-
+    # simulations <- lapply(1:n_simulations, function(i) {
     set.seed(i * 7)
 
-    fit <- simulate(n_obs, p_preterm, p_autism, p_geriatric_preg)
+    simulation <- simulate(n_obs, p_preterm, p_autism, p_geriatric_preg)
 
-    fit$iteration <- i
+    model <- stats::glm(autism ~ geriatric_preg
+                        + factor(preterm)
+                        + I(preterm > 0):geriatric_preg,
+                        data = simulation,
+                        family = "binomial")
 
-    return(fit)
+    model_estimates <- broom::tidy(model)
+
+    model_estimates$iteration <- i
+
+    return(simulation)
 
   })
 

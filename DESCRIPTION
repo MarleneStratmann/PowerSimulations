@@ -8,20 +8,7 @@ Description: This package creates a datset using Monte Carlo simulations. It can
              make power calulcations based on gestational age, geriatric pregnancy and autism prevalence.
              Each of these variables can be changed in the function.
              The package also includes interactions between autism prevalence and gestational age as well as 
-             autism prevalence and geriatric pregnancies. The code for these interactions is as follows-
-               dta$autism <- stats::rbinom(n_obs, 1, p_autism
-                              + dta$geriatric_preg  * 0.04
-                              + I(dta$preterm == 1) * 0.10
-                              + I(dta$preterm == 2) * 0.05
-                              + I(dta$preterm == 3) * 0.025
-                              + dta$geriatric_preg * I(dta$preterm > 0) * 0.05)
-                              
-             The model specifications for the power calculations are -
-               model <- stats::glm(autism ~ geriatric_preg
-                      + factor(preterm)
-                      + I(dta$preterm > 0):geriatric_preg,
-                      data = dta,
-                      family = "binomial")
+             autism prevalence and geriatric pregnancies.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

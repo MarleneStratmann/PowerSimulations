@@ -5,10 +5,23 @@ This package makes it easy to calculate power for sampling study participants. T
 This is an easy example how you can modify the code:
 
 ```
-run_simulations(n_obs = 500, n_simulations = 100, n_parallel_cores = 3,
+run_simulations(n_obs = 500, 
+                n_simulations = 100, 
+                n_parallel_cores = 3,
                 p_preterm = list(very = 0.01, moderate = 0.1, late = 0.3),
                 p_autism = 0.05,
                 p_geriatric_preg = 1/6)
+ ```
+ 
+Alternatively, you can use run_simulations_stratified if you are interested in a stratified sample:
+```
+run_simulations_stratified(strata_sizes = list(very_preterm = 2500, moderate_preterm = 2500,
+                           late_preterm = 2500, not_preterm = 2500), 
+                           n_simulations = 1000,
+                           n_parallel_cores = 5, 
+                           p_preterm = list(very = 0.01, moderate = 0.1, late = 0.3),
+                           p_autism = 0.05,
+                           p_geriatric_preg = 1/6)       
 ```
 The package also includes interactions between autism prevalence and gestational age as well as 
              autism prevalence and geriatric pregnancies. The code for these interactions is as follows:

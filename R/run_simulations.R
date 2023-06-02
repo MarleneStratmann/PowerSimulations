@@ -47,7 +47,7 @@ run_simulations <- function(n_obs            = 10000,
 
     model_estimates$iteration <- i
 
-    return(simulation)
+    return(model_estimates)
 
   })
 
@@ -59,14 +59,14 @@ run_simulations <- function(n_obs            = 10000,
 
   cat("Simulated", n_simulations, "datasets with", n_obs, "observation\n")
   cat("using the following parameters:\n")
-  cat("--------------------------------------\n")
+  cat("---------------------------------------------\n")
   cat("Preterm prevalences\n")
   cat("   very:    "                   , p_preterm[["very"]]    , "\n")
   cat("   moderate:"                   , p_preterm[["moderate"]], "\n")
   cat("   late:    "                   , p_preterm[["late"]]    , "\n")
   cat("Autism prevalence:             ", p_autism               , "\n")
   cat("Geriatric pregnancy prevalence:", p_geriatric_preg       , "\n")
-  cat("--------------------------------------\n")
+  cat("---------------------------------------------\n")
 
   cat("\nSimulation results:\n")
   # Calculate power

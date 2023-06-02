@@ -11,9 +11,9 @@ simulate <- function(n_obs, p_preterm, p_autism, p_geriatric_preg) {
   dta$geriatric_preg <- stats::rbinom(n_obs, 1, p_geriatric_preg)
 
   dta$preterm <- pmax(0,
-                      stats::rbinom(n_obs, 1, p_preterm[["very"]])     * 1,
-                      stats::rbinom(n_obs, 1, p_preterm[["moderate"]]) * 2,
-                      stats::rbinom(n_obs, 1, p_preterm[["late"]])     * 3)
+                      stats::rbinom(n_obs, 1, p_preterm[["late"]])    * 1,
+                      stats::rbinom(n_obs, 1, p_preterm[["moderate"]])* 2,
+                      stats::rbinom(n_obs, 1, p_preterm[["very"]])    * 3)
 
   dta$autism <- stats::rbinom(n_obs, 1, p_autism
                               + dta$geriatric_preg  * 0.04
